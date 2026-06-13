@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir \"C:\\\\Users\\\\cğjiğl\\\\Desktop\\\\high voltage proje\")",
+      "PowerShell(python main.py)",
+      "PowerShell(python -c \"import json; from src.solver import solve_impulse_circuit; from src.standards import evaluate_lightning_impulse; cfg=json.load\\(open\\('config.json'\\)\\); t,v1,v2=solve_impulse_circuit\\(cfg\\); print\\('V_C1[0]=', v1[0], 'kV   V_C2[0]=', v2[0], 'kV'\\); print\\('peak V_C2 =', v2.max\\(\\), 'kV at t=', t[v2.argmax\\(\\)], 'us'\\); print\\(evaluate_lightning_impulse\\(t, v2\\)\\)\")",
+      "PowerShell(python main.py; if \\(Test-Path impulse_plot.png\\) { $f = Get-Item impulse_plot.png; \"Plot file: $\\($f.Length\\) bytes, modified $\\($f.LastWriteTime\\)\" } else { \"NO PLOT WRITTEN\" })",
+      "PowerShell(python -c \"import PyQt6; print\\('PyQt6', PyQt6.QtCore.PYQT_VERSION_STR if hasattr\\(PyQt6, 'QtCore'\\) else 'present'\\); from PyQt6.QtCore import QT_VERSION_STR; print\\('Qt', QT_VERSION_STR\\)\" 2>&1)",
+      "PowerShell(python _smoke_test.py)",
+      "PowerShell(Remove-Item *)",
+      "PowerShell(python _rc_screenshot.py)",
+      "PowerShell(python -c \"import json, copy; from src.solver import find_optimal_resistors, solve_impulse_circuit; from src.standards import evaluate_lightning_impulse; cfg=json.load\\(open\\('config.json'\\)\\); orig=copy.deepcopy\\(cfg\\); print\\('Before:'\\); t,_,v2=solve_impulse_circuit\\(cfg\\); ev=evaluate_lightning_impulse\\(t,v2\\); print\\(f'  R1={cfg[\\\\\"impulse_generator\\\\\"][\\\\\"R1_ohm\\\\\"]:.1f}  R2={cfg[\\\\\"impulse_generator\\\\\"][\\\\\"R2_ohm\\\\\"]:.1f}  T1={ev[\\\\\"T1_us\\\\\"]:.3f}  T2={ev[\\\\\"T2_us\\\\\"]:.2f}  std={ev[\\\\\"is_standard_lightning\\\\\"]}'\\); opt=find_optimal_resistors\\(cfg\\); print\\(f'Optimized: R1={opt[\\\\\"R1_ohm\\\\\"]:.2f}  R2={opt[\\\\\"R2_ohm\\\\\"]:.2f}'\\); cfg2=copy.deepcopy\\(cfg\\); cfg2['impulse_generator'].update\\(opt\\); t,_,v2=solve_impulse_circuit\\(cfg2\\); ev=evaluate_lightning_impulse\\(t,v2\\); print\\(f'  After: T1={ev[\\\\\"T1_us\\\\\"]:.3f}  T2={ev[\\\\\"T2_us\\\\\"]:.2f}  std={ev[\\\\\"is_standard_lightning\\\\\"]}'\\); print\\(f'Input config untouched: {cfg == orig}'\\)\")",
+      "PowerShell(python _smoke_opt.py)",
+      "PowerShell(python _smoke_gui.py)",
+      "PowerShell(python _smoke_tune.py)",
+      "PowerShell(python _shot.py)",
+      "Bash(python -m py_compile src/gui.py)",
+      "Bash(python -c ' *)",
+      "Bash(python -c \"from src.solver import find_optimal_resistors; print\\('RLC keys:', list\\(find_optimal_resistors\\({'V0_kV':100,'C1_nF':100,'C2_nF':1,'R1_ohm':500,'R2_ohm':2500,'L_uH':10,'circuit_mode':'RLC'}\\).keys\\(\\)\\)\\); print\\('Cur keys:', list\\(find_optimal_resistors\\({'V0_kV':100,'C1_nF':100,'C2_nF':1,'R1_ohm':500,'R2_ohm':2500,'L_uH':10,'circuit_mode':'Impulse Current'}\\).keys\\(\\)\\)\\)\")",
+      "Bash(:)",
+      "Bash(python _healthcheck.py)",
+      "Bash(python -m py_compile src/solver.py src/gui.py)"
+    ]
+  }
+}

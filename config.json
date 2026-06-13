@@ -1,0 +1,11 @@
+{
+    "impulse_generator": {
+        "V0_kV": 100.0,
+        "C1_nF": 10.0,
+        "C2_nF": 1.0,
+        "R1_ohm": 500.0,
+        "R2_ohm": 2500.0,
+        "L_uH": 10.0,
+        "circuit_mode": "RC"
+    }
+}
